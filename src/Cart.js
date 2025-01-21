@@ -2,7 +2,7 @@ import React from 'react';
 
 function Cart({ cartItems }) {
   return (
-    <div style={{ marginTop: '20px' }}>
+    <div>
       <h2>Cart ({cartItems.length})</h2>
       {cartItems.length === 0 ? (
         <p>No items in cart.</p>
