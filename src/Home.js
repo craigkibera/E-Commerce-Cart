@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react';
 import ProductItem from './ProductItem'
+import Cart from './Cart';
+
 
 function Home() {
+    const [cart,setCart] = useState([]);
     const products =[{ "id": 1, "name": "T-Shirt", "price": 20 },
 
         { "id": 2, "name": "Jeans", "price": 40 },
@@ -12,16 +15,28 @@ function Home() {
       
         { "id": 5, "name": "Socks", "price": 5 }]
 
-        const product = products.map(itemClothes)
+        const addToCart = (product) => {
+            setCart((prevCart) => [...prevCart, product]);
+          };
+        
 
-        function itemClothes(currItem,currIndex){
-            return <ProductItem list={currItem}/>
-        }
-  return (
+        const product = products.map((item)=>
+    (
+        <ProductItem key={item.id}
+        id={item.id} name={item.name}
+        price={item.price} addToCart={addToCart}/>
+        
+
+        
+    ));
+     return (
     <>
       <h1>List of products</h1>
       {product}
-    </>
+      <Cart cartItems={cart} />
+
+       </>
+    
   )
 }
 
