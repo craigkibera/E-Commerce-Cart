@@ -24,11 +24,20 @@ function Home() {
     (
         <ProductItem key={item.id}
         id={item.id} name={item.name}
-        price={item.price} addToCart={addToCart}/>
+        price={item.price} addToCart={addToCart} onDelete={handleDeleteProducts}/>
         
+      ));
+      function handleDeleteProducts(childData){
+        console.log(childData)
 
+        let newProducts =products.filter(filterItems)
+        function filterItems(currItem){
+          return currItem !== childData
+
+        }
+        console.log(newProducts)
         
-    ));
+      }
      return (
     <>
       <h1>List of products</h1>
